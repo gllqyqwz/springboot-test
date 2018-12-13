@@ -1,6 +1,6 @@
 package com.wenzq.api.test;
 
-public interface MyTest {
+public interface MyDubboTest {
 
     String test(String requestStr);
 

@@ -1,6 +1,7 @@
 package com.wenzq.remote.api.impl.test;
 
-import com.wenzq.api.test.MyTest;
+import com.wenzq.api.test.MyDubboTest;
+import com.wenzq.api.test.MyDubboTest;
 import com.wenzq.remote.TestApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,7 @@ public class MyTestTest {
     private static final Logger logger = LoggerFactory.getLogger(MyTestTest.class);
 
     @Autowired
-    private MyTest myTest;
+    private MyDubboTest myTest;
 
     @Test
     public void test(){
