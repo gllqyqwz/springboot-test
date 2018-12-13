@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<!-- 应用信息 -->
+	<dubbo:application name="b2b-pss-remote" logger="slf4j" />
+	
+	<!-- 注册中心 -->
+	<dubbo:registry protocol="zookeeper" address="${spring.dubbo.registry.address}" />
+	
+	<!-- 服务提供者 端口 线程数 -->
+	<dubbo:protocol name="dubbo" port="${spring.dubbo.protocol.port}" threads="${spring.dubbo.protocol.threads}" />
+	
+	<!-- 服务提供者 默认响应时间和重试次数 -->
+	<dubbo:provider timeout="3000" retries="0" />
+	
+	<!-- 服务消费者 启动时不检查-->
+	<dubbo:consumer check="false" />
+	
+	<!-- 通过注册中心发现监控中心服务 -->
+	<dubbo:monitor protocol="registry" />
+	
+</beans>

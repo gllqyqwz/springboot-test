@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.wenzq</groupId>
+  <artifactId>springboot-test</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <modules>
+    <module>test-common</module>
+    <module>test-model</module>
+    <module>test-persistence</module>
+    <module>test-service</module>
+    <module>test-api</module>
+    <module>test-remote</module>
+    <module>test-web</module>
+  </modules>
+
+  <properties>
+    <project.version>1.0.0-SNAPSHOT</project.version>
+    <middleware.logging.version>0.0.4-RELEASE</middleware.logging.version>
+    <logstash.logback.encoder.version>4.7.1</logstash.logback.encoder.version>
+    <spring.boot.starter.healthcheck>1.0-SNAPSHOT</spring.boot.starter.healthcheck>
+    <apollo.version>0.11.0</apollo.version>
+
+    <spring.version>4.3.13.RELEASE</spring.version>
+    <spring.boot.versin>1.5.9.RELEASE</spring.boot.versin>
+    <spring.boot.legacy.version>1.0.2.RELEASE</spring.boot.legacy.version>
+    <mybatis.plus.boot.version>2.1.9</mybatis.plus.boot.version>
+    <dubbo.spring.boot.version>2.0.0</dubbo.spring.boot.version>
+    <mysql.connector.verson>5.1.41</mysql.connector.verson>
+    <druid.version>1.0.29</druid.version>
+    <zookeeper.version>3.4.9</zookeeper.version>
+    <zkclient.version>0.1</zkclient.version>
+    <spring.boot.data.redis.version>1.5.6.RELEASE</spring.boot.data.redis.version>
+    <junit.version>4.12</junit.version>
+    <commons.beanutils.version>1.9.3</commons.beanutils.version>
+    <commons.lang3.version>3.0</commons.lang3.version>
+    <modelmapper.version>2.1.0</modelmapper.version>
+    <fastjson.version>1.2.49</fastjson.version>
+    <hibernate.version>5.3.1.Final</hibernate.version>
+  </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>yyw-releases</id>
+      <url>http://maven.yiyaowang.com/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>yyw-snapshots</id>
+      <url>http://maven.yiyaowang.com/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- 本地 -->
+      <dependency>
+        <groupId>com.wenzq</groupId>
+        <artifactId>test-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wenzq</groupId>
+        <artifactId>test-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wenzq</groupId>
+        <artifactId>test-model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wenzq</groupId>
+        <artifactId>test-persistence</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.wenzq</groupId>
+        <artifactId>test-service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <!-- 111:集团 -->
+      <dependency>
+        <groupId>com.gangling.middleware</groupId>
+        <artifactId>middleware-logging</artifactId>
+        <version>${middleware.logging.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.gangling</groupId>
+        <artifactId>logstash-logback-encoder</artifactId>
+        <version>${logstash.logback.encoder.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.yao</groupId>
+        <artifactId>spring-boot-starter-healthcheck</artifactId>
+        <version>${spring.boot.starter.healthcheck}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.ctrip.framework.apollo</groupId>
+        <artifactId>apollo-client</artifactId>
+        <version>${apollo.version}</version>
+      </dependency>
+
+      <!-- spring -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-framework-bom</artifactId>
+        <version>${spring.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring.boot.versin}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+        <version>${spring.boot.versin}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring.boot.versin}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-legacy</artifactId>
+        <version>${spring.boot.legacy.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis.plus.boot.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba.spring.boot</groupId>
+        <artifactId>dubbo-spring-boot-starter</artifactId>
+        <version>${dubbo.spring.boot.version}</version>
+      </dependency>
+
+      <!-- jedis -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+        <version>${spring.boot.data.redis.version}</version>
+      </dependency>
+
+      <!-- mysql -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.connector.verson}</version>
+      </dependency>
+
+      <!-- druid -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>${druid.version}</version>
+      </dependency>
+
+      <!-- zookeeper -->
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>${zookeeper.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.github.sgroschupf</groupId>
+        <artifactId>zkclient</artifactId>
+        <version>${zkclient.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>*</groupId>
+            <artifactId>*</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <!-- junit -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+
+      <!-- jedis -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+        <version>${spring.boot.data.redis.version}</version>
+      </dependency>
+
+      <!-- logback -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.22</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+        <version>1.1.11</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.1.11</version>
+      </dependency>
+
+      <!-- common utils -->
+      <dependency>
+        <groupId>commons-beanutils</groupId>
+        <artifactId>commons-beanutils</artifactId>
+        <version>${commons.beanutils.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons.lang3.version}</version>
+      </dependency>
+
+      <!-- 其他工具 -->
+      <dependency>
+        <groupId>org.modelmapper</groupId>
+        <artifactId>modelmapper</artifactId>
+        <version>${modelmapper.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <!--hibernate 参数校验-->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${hibernate.version}</version>
+      </dependency>
+
+      <!-- servlet -->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>3.1.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <type>jar</type>
+        <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <type>jar</type>
+        <version>1.1.1</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.0.1</version>
+        <configuration>
+          <attach>true</attach>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

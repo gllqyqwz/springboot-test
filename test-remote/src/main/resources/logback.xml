@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.gangling.logging.ThresholdFilter">  <!-- 日志级别动态调整，集团架构提供的filter -->
+            <level>INFO</level>                    <!-- 线上环境默认级别为ERROR，可以通过管理后台统一调整 -->
+            <appName>test-remote</appName>            <!--  部署的应用名称，管理后台调整日志级别时需要确定是哪个应用 -->
+        </filter>
+        <encoder>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home:-/app}/logs/test-remote/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"><!-- 日志文件按日滚动，最多保留30天的日志文件 -->
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>${catalina.home:-/app}/logs/test-remote/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <filter class="com.gangling.logging.ThresholdFilter">
+            <level>ERROR</level>
+            <appName>test-remote</appName>
+        </filter>
+    </appender>
+
+    <appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/app/logs/logstash.log</file> <!-- 日志文件输出位置，logstash agent固定抓取该文件 -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>
+        </encoder>
+        <filter class="com.gangling.logging.ThresholdFilter">
+            <level>ERROR</level>
+            <appName>test-remote</appName>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"><!-- 日志文件按日滚动，最多保留30天的日志文件 -->
+            <!--日志文件输出的文件名 -->
+            <FileNamePattern>/app/logs/logstash.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.ibatis" level="ERROR" >
+    </logger>
+
+    <logger name="com.mysql" level="ERROR" >
+    </logger>
+
+    <logger name="java.sql" level="ERROR" >
+    </logger>
+
+    <logger name="org.springframework" level="ERROR" >
+    </logger>
+
+    <logger name="com.yao" level="INFO" >
+    </logger>
+
+    <logger name="com.yesky" level="ERROR" >
+    </logger>
+
+    <logger name="org.quartz" level="ERROR" >
+    </logger>
+
+    <logger name="com.alibaba" level="ERROR" >
+    </logger>
+
+    <logger name="com.taobao" level="ERROR" >
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="stdout" />  <!-- 输出到控制台 -->
+        <appender-ref ref="logstash" />   <!-- 输出到logstash -->
+        <appender-ref ref="error"/> <!--输出的error文件  -->
+    </root>
+</configuration>
