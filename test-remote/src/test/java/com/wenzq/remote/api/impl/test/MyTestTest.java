@@ -1,7 +1,6 @@
 package com.wenzq.remote.api.impl.test;
 
 import com.wenzq.api.test.MyDubboTest;
-import com.wenzq.api.test.MyDubboTest;
 import com.wenzq.remote.TestApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;

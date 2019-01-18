@@ -4,4 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
+	<dubbo:service timeout="6000" interface="com.wenzq.api.test.MyDubboTest" ref="myDubboTest" retries="0" />
+
 </beans>

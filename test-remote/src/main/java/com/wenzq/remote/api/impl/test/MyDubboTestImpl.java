@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("myTest")
+@Service("myDubboTest")
 public class MyDubboTestImpl implements MyDubboTest {
     private static  final Logger logger = LoggerFactory.getLogger(MyDubboTestImpl.class);
 
