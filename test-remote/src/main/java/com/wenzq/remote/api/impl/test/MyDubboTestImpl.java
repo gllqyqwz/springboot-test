@@ -2,7 +2,6 @@ package com.wenzq.remote.api.impl.test;
 
 import com.alibaba.fastjson.JSON;
 import com.wenzq.api.test.MyDubboTest;
-import com.wenzq.api.test.MyDubboTest;
 import com.wenzq.persistence.entity.test.Test;
 import com.wenzq.service.business.test.TestService;
 import org.slf4j.Logger;
@@ -12,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 @Service("myDubboTest")
 public class MyDubboTestImpl implements MyDubboTest {
-    private static  final Logger logger = LoggerFactory.getLogger(MyDubboTestImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(MyDubboTestImpl.class);
+    private static final String LOGPRESTR = ">>>>>>: ";
 
     @Autowired
     private TestService testService;
@@ -24,9 +24,10 @@ public class MyDubboTestImpl implements MyDubboTest {
         try{
             Test test = testService.selectById(1);
 
-            logger.info(">>>>>>: ", JSON.toJSONString(test));
+            String testJson = JSON.toJSONString(test);
+            logger.info(LOGPRESTR, testJson);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("MyTestImpl.test 异常：", e);
         }
 
         return requestStr;
