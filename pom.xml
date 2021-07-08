@@ -40,7 +40,7 @@
     <commons.lang3.version>3.0</commons.lang3.version>
     <modelmapper.version>2.1.0</modelmapper.version>
     <fastjson.version>1.2.49</fastjson.version>
-    <hibernate.version>5.3.1.Final</hibernate.version>
+    <hibernate.version>5.3.6.Final</hibernate.version>
   </properties>
 
   <distributionManagement>
