@@ -35,7 +35,7 @@
     <zookeeper.version>3.4.9</zookeeper.version>
     <zkclient.version>0.1</zkclient.version>
     <spring.boot.data.redis.version>1.5.6.RELEASE</spring.boot.data.redis.version>
-    <junit.version>4.12</junit.version>
+    <junit.version>4.13.1</junit.version>
     <commons.beanutils.version>1.9.3</commons.beanutils.version>
     <commons.lang3.version>3.0</commons.lang3.version>
     <modelmapper.version>2.1.0</modelmapper.version>
