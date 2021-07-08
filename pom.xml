@@ -25,7 +25,7 @@
     <spring.boot.starter.healthcheck>1.0-SNAPSHOT</spring.boot.starter.healthcheck>
     <apollo.version>0.11.0</apollo.version>
 
-    <spring.version>4.3.13.RELEASE</spring.version>
+    <spring.version>4.3.29.RELEASE</spring.version>
     <spring.boot.versin>1.5.9.RELEASE</spring.boot.versin>
     <spring.boot.legacy.version>1.0.2.RELEASE</spring.boot.legacy.version>
     <mybatis.plus.boot.version>2.1.9</mybatis.plus.boot.version>
